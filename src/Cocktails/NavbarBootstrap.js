@@ -59,7 +59,7 @@ export function NavbarBootstrap() {
             >
               <FiShoppingCart className="fa-2x " />
               <span class="position-absolute top-0 start-100 p-2 translate-middle badge rounded-pill bg-primary">
-                {context.info.NumberofOrderedDrink}
+                {9}
               </span>
             </button>
             <form

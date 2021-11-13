@@ -16,6 +16,11 @@ const reducer = (state, action) => {
       newState.Data = action.value;
       newState.DataCopy = action.value;
       newState.NumberofDrink = action.value.length;
+      const newNumberofOrderedDrink = [...newState.NumberofOrderedDrink];
+      for (let i = 0; i < action.value.length; i++) {
+        newNumberofOrderedDrink.push(0);
+      }
+      newState.NumberofOrderedDrink = newNumberofOrderedDrink;
       return newState;
     }
     case "search": {
@@ -39,19 +44,24 @@ const reducer = (state, action) => {
       }
     }
     case "ADD-TO-CART": {
-      console.log("add to cart exected");
       const newState = { ...state };
-      newState.Data.forEach((drink) => {
-        if (drink.idDrink === action.payload) {
-          console.log("if statement ");
+       const newNumberofOrderedDrink = [...newState.NumberofOrderedDrink];
+      //find the index of item that action.payload matches it id
 
-          drink.numberofOrdered++;
+      let Index = 0;
+      for (let i = 0; i < newState.Data.length; i++){
+        if (newState.Data[i].idDrink === action.payload) {
+          break;
         }
-      });
+        Index++;
+      }
+      
+      
+      console.log(`founded index is : ${Index}`)
+      newNumberofOrderedDrink[Index]++;
+      newState.NumberofOrderedDrink = newNumberofOrderedDrink;
       return newState;
     }
-    default:
-      return state;
   }
 };
 const initialState = {
@@ -59,7 +69,7 @@ const initialState = {
   Data: [],
   DataCopy: [],
   NumberofDrink: 0,
-  NumberofOrderedDrink: 0
+  NumberofOrderedDrink: [],
 };
 export function DataProvidor(props) {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -78,17 +88,14 @@ export function DataProvidor(props) {
         strGlass: "Shot Glass",
         strAlcoholic: "Nuclear",
         strInstructions: "Dartar",
-        strIngredient1: "karavi"
+        strIngredient1: "karavi",
       };
       Data.drinks.push(newItem);
 
       //Adding Price to every drink
-      //and also
-      //Adding number of ordered drink property to every drink, initially hard coded with 0
 
       Data.drinks.map((drink) => {
         drink.price = 20;
-        drink.numberofOrdered = 0;
         return drink;
       });
 

@@ -14,7 +14,7 @@ export function ProductShower() {
 
       <div className="container  ">
         <div className="row justify-content-center ">
-          {Data.map((Item) => {
+          {Data.map((Item,index) => {
             return (
               <div
                 key={Item.idDrink}
@@ -44,12 +44,12 @@ export function ProductShower() {
                         onClick={() => {
                           dispatch({
                             type: "ADD-TO-CART",
-                            payload: Item.idDrink
+                            payload: Item.idDrink,
                           });
                         }}
                       />
                       <p className="float-end ms-4 my-auto border p-2">
-                        {Item.numberofOrdered}
+                               {context.info.NumberofOrderedDrink[index]}
                       </p>
                       <FaMinus className="float-end mt-2  btn-lg p-0" />
                     </div>
