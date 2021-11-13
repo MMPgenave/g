@@ -44,7 +44,8 @@ const initialState = {
   isLoading: true,
   Data: [],
   DataCopy: [],
-  NumberofDrink: 0
+  NumberofDrink: 0,
+  NumberofOrderedDrink: 0
 };
 export function DataProvidor(props) {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -66,6 +67,12 @@ export function DataProvidor(props) {
         strIngredient1: "karavi"
       };
       Data.drinks.push(newItem);
+
+      //Adding Price to every drink
+      const DrinkWithPrice = Data.drinks.map((drink) => {
+        drink.price = 20;
+        return drink;
+      });
 
       dispatch({ type: "DataFetching", value: Data.drinks });
     } catch (error) {

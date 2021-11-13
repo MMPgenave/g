@@ -30,6 +30,7 @@ export function ProductShower() {
                   <h1 className="card-title">{Item.strDrink}</h1>
                   <h3>{Item.strGlass}</h3>
                   <h4>{Item.strAlcoholic}</h4>
+                  <p>{Item.price}</p>
                   <Link
                     className="btn-lg btn-primary "
                     style={{ "text-decoration": "none" }}

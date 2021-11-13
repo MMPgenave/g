@@ -53,7 +53,15 @@ export function NavbarBootstrap() {
                 About
               </Link>
             </div>
-            <FiShoppingCart className="ms-auto me-5 fa-lg" />
+            <button
+              type="button"
+              class="btn p-1  bg-transparent position-relative ms-auto me-4 "
+            >
+              <FiShoppingCart className="fa-2x " />
+              <span class="position-absolute top-0 start-100 p-2 translate-middle badge rounded-pill bg-primary">
+                {context.info.NumberofOrderedDrink}
+              </span>
+            </button>
             <form
               className="d-flex  "
               onSubmit={(e) => {
