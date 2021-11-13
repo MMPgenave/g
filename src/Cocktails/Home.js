@@ -7,7 +7,6 @@ import { Loading } from "./Loading";
 export function Home() {
   const context = useContext(mycontext);
   const isLoading = context.info.isLoading;
-  console.log(`Data length :${context.info.Data.length}`);
   if (isLoading) {
     return <Loading />;
   }
@@ -16,7 +15,24 @@ export function Home() {
   }
   return (
     <div>
+      <TableNumber />
       <ProductShower />
     </div>
   );
 }
+const TableNumber = () => {
+  return (
+    <div class="input-group mb-3 mt-4 w-25 ms-5">
+      <span class="input-group-text" id="basic-addon1">
+        Table Number
+      </span>
+      <input
+        type="number"
+        class="form-control"
+        placeholder="Table Number"
+        aria-label="Username"
+        aria-describedby="basic-addon1"
+      />
+    </div>
+  );
+};

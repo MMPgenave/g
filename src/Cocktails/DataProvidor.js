@@ -38,6 +38,20 @@ const reducer = (state, action) => {
         return newState;
       }
     }
+    case "ADD-TO-CART": {
+      console.log("add to cart exected");
+      const newState = { ...state };
+      newState.Data.forEach((drink) => {
+        if (drink.idDrink === action.payload) {
+          console.log("if statement ");
+
+          drink.numberofOrdered++;
+        }
+      });
+      return newState;
+    }
+    default:
+      return state;
   }
 };
 const initialState = {
@@ -69,8 +83,12 @@ export function DataProvidor(props) {
       Data.drinks.push(newItem);
 
       //Adding Price to every drink
-      const DrinkWithPrice = Data.drinks.map((drink) => {
+      //and also
+      //Adding number of ordered drink property to every drink, initially hard coded with 0
+
+      Data.drinks.map((drink) => {
         drink.price = 20;
+        drink.numberofOrdered = 0;
         return drink;
       });
 

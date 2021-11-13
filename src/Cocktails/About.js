@@ -1,5 +1,5 @@
 import React from "react";
 
 export function About() {
-  return <div className="about">About page is empty for now!</div>;
+  return <div className="about">auto waiter</div>;
 }
