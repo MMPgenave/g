@@ -49,9 +49,17 @@ export function ProductShower() {
                         }}
                       />
                       <p className="float-end ms-4 my-auto border p-2">
-                               {context.info.NumberofOrderedDrink[index]}
+                        {Item.NumberofOrderedDrink}
                       </p>
-                      <FaMinus className="float-end mt-2  btn-lg p-0" />
+                      <FaMinus
+                        className="float-end mt-2  btn-lg p-0"
+                        onClick={() => {
+                          dispatch({
+                            type: "DROP-FROM-CART",
+                            payload: Item.idDrink,
+                          });
+                        }}
+                      />
                     </div>
                   </div>
                 </div>

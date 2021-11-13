@@ -16,11 +16,7 @@ const reducer = (state, action) => {
       newState.Data = action.value;
       newState.DataCopy = action.value;
       newState.NumberofDrink = action.value.length;
-      const newNumberofOrderedDrink = [...newState.NumberofOrderedDrink];
-      for (let i = 0; i < action.value.length; i++) {
-        newNumberofOrderedDrink.push(0);
-      }
-      newState.NumberofOrderedDrink = newNumberofOrderedDrink;
+
       return newState;
     }
     case "search": {
@@ -33,6 +29,7 @@ const reducer = (state, action) => {
         return newState;
       } else {
         const newState = { ...state };
+        //we filter the DataCopy agint Data
         const filteredProducts = newState.DataCopy.filter(
           (p) =>
             p.strDrink.toLowerCase().includes(value.toLowerCase()) ||
@@ -44,22 +41,94 @@ const reducer = (state, action) => {
       }
     }
     case "ADD-TO-CART": {
-      const newState = { ...state };
-       const newNumberofOrderedDrink = [...newState.NumberofOrderedDrink];
-      //find the index of item that action.payload matches it id
+      //this is the complex code that i wrote here
 
-      let Index = 0;
-      for (let i = 0; i < newState.Data.length; i++){
-        if (newState.Data[i].idDrink === action.payload) {
+      const newState = { ...state };
+
+      let newData = [...newState.Data];
+      //finding that specific drink by using the receiving id =action.payload;
+
+      let i;
+      for (i = 0; i < newData.length; i++) {
+        if (newData[i].idDrink === action.payload) {
           break;
         }
-        Index++;
       }
-      
-      
-      console.log(`founded index is : ${Index}`)
-      newNumberofOrderedDrink[Index]++;
-      newState.NumberofOrderedDrink = newNumberofOrderedDrink;
+      const newDrink = { ...newData[i] };
+      newDrink.NumberofOrderedDrink++;
+      newData[i] = newDrink;
+
+      newState.Data = newData;
+
+      //we have to add this change to DataCopy , because in search component we search based on DataCopy
+
+      const newDataCopy = [...newState.DataCopy];
+      let j;
+      for (j = 0; j < newDataCopy.length; j++) {
+        if (newDataCopy[j].idDrink === action.payload) {
+          break;
+        }
+      }
+      const newDrinkofDataCopyList = { ...newDataCopy[j] };
+      newDrinkofDataCopyList.NumberofOrderedDrink++;
+      newDataCopy[j] = newDrinkofDataCopyList;
+      newState.DataCopy = newDataCopy;
+
+      //update the Total Price
+      newState.TotalPrice = newState.TotalPrice + newDrinkofDataCopyList.price;
+
+      return newState;
+    }
+    case "DROP-FROM-CART": {
+      //this is the complex code that i wrote here
+
+      const newState = { ...state };
+
+      let newData = [...newState.Data];
+      //finding that specific drink by using the receiving id =action.payload;
+
+      let i;
+      for (i = 0; i < newData.length; i++) {
+        if (newData[i].idDrink === action.payload) {
+          break;
+        }
+      }
+      const newDrink = { ...newData[i] };
+      if (newDrink.NumberofOrderedDrink === 0) {
+        newDrink.NumberofOrderedDrink = 0;
+      } else {
+        newDrink.NumberofOrderedDrink--;
+      }
+
+      newData[i] = newDrink;
+
+      newState.Data = newData;
+
+      //we have to add this change to DataCopy , because in search component we search based on DataCopy
+
+      const newDataCopy = [...newState.DataCopy];
+      let j;
+      for (j = 0; j < newDataCopy.length; j++) {
+        if (newDataCopy[j].idDrink === action.payload) {
+          break;
+        }
+      }
+      const newDrinkofDataCopyList = { ...newDataCopy[j] };
+      if (newDrinkofDataCopyList.NumberofOrderedDrink === 0) {
+        newDrinkofDataCopyList.NumberofOrderedDrink = 0;
+      } else {
+        newDrinkofDataCopyList.NumberofOrderedDrink--;
+      }
+      newDataCopy[j] = newDrinkofDataCopyList;
+      newState.DataCopy = newDataCopy;
+
+      //update the Total Price
+      if (newState.TotalPrice === 0) {
+        newState.TotalPrice = 0;
+      } else {
+        newState.TotalPrice =
+          newState.TotalPrice - newDrinkofDataCopyList.price;
+      }
       return newState;
     }
   }
@@ -69,7 +138,8 @@ const initialState = {
   Data: [],
   DataCopy: [],
   NumberofDrink: 0,
-  NumberofOrderedDrink: [],
+  NumberofTotaOrderedDrink: 0,
+  TotalPrice: 0,
 };
 export function DataProvidor(props) {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -93,9 +163,11 @@ export function DataProvidor(props) {
       Data.drinks.push(newItem);
 
       //Adding Price to every drink
-
+      //and also
+      //Adding NumberofOrderedDrink property to every drink
       Data.drinks.map((drink) => {
         drink.price = 20;
+        drink.NumberofOrderedDrink = 0;
         return drink;
       });
 

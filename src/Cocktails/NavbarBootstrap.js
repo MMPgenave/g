@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 export function NavbarBootstrap() {
   const context = useContext(mycontext);
+  const NumberofDrinks = context.info.NumberofTotaOrderedDrink;
   const dispatch = context.action;
   const [value, setValue] = useState("");
   const searchValue = React.useRef("");
@@ -59,7 +60,7 @@ export function NavbarBootstrap() {
             >
               <FiShoppingCart className="fa-2x " />
               <span class="position-absolute top-0 start-100 p-2 translate-middle badge rounded-pill bg-primary">
-                {9}
+                {NumberofDrinks}
               </span>
             </button>
             <form

@@ -15,6 +15,7 @@ export function Home() {
   }
   return (
     <div>
+      <TotalPrice />
       <TableNumber />
       <ProductShower />
     </div>
@@ -36,3 +37,15 @@ const TableNumber = () => {
     </div>
   );
 };
+
+
+function TotalPrice() {
+    const context = useContext(mycontext);
+
+  return (
+    <div>
+      <h1>Total Price : {context.info.TotalPrice } $</h1>
+    </div>
+  )
+}
+
