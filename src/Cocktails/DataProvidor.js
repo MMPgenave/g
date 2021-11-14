@@ -77,6 +77,12 @@ const reducer = (state, action) => {
       //update the Total Price
       newState.TotalPrice = newState.TotalPrice + newDrinkofDataCopyList.price;
 
+      //update the NumberofTotalDrinks
+      let sum = 0;
+      for (let i = 0; i < newDataCopy.length; i++) {
+        sum = sum + newDataCopy[i].NumberofOrderedDrink;
+      }
+      newState.NumberofTotaOrderedDrink = sum;
       return newState;
     }
     case "DROP-FROM-CART": {
@@ -129,8 +135,17 @@ const reducer = (state, action) => {
         newState.TotalPrice =
           newState.TotalPrice - newDrinkofDataCopyList.price;
       }
+
+      //update the NumberofTotalDrinks
+      let sum = 0;
+      for (let i = 0; i < newDataCopy.length; i++) {
+        sum = sum + newDataCopy[i].NumberofOrderedDrink;
+      }
+      newState.NumberofTotaOrderedDrink = sum;
       return newState;
     }
+    default:
+      return state;
   }
 };
 const initialState = {
@@ -139,7 +154,7 @@ const initialState = {
   DataCopy: [],
   NumberofDrink: 0,
   NumberofTotaOrderedDrink: 0,
-  TotalPrice: 0,
+  TotalPrice: 0
 };
 export function DataProvidor(props) {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -158,7 +173,7 @@ export function DataProvidor(props) {
         strGlass: "Shot Glass",
         strAlcoholic: "Nuclear",
         strInstructions: "Dartar",
-        strIngredient1: "karavi",
+        strIngredient1: "karavi"
       };
       Data.drinks.push(newItem);
 

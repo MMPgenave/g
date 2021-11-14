@@ -11,10 +11,10 @@ export function ProductShower() {
   return (
     <div className="section">
       <NumberOfDrinks />
-
+      <hr class="bg-danger border-2 border-top border-danger" />
       <div className="container  ">
         <div className="row justify-content-center ">
-          {Data.map((Item,index) => {
+          {Data.map((Item, index) => {
             return (
               <div
                 key={Item.idDrink}
@@ -44,7 +44,7 @@ export function ProductShower() {
                         onClick={() => {
                           dispatch({
                             type: "ADD-TO-CART",
-                            payload: Item.idDrink,
+                            payload: Item.idDrink
                           });
                         }}
                       />
@@ -56,7 +56,7 @@ export function ProductShower() {
                         onClick={() => {
                           dispatch({
                             type: "DROP-FROM-CART",
-                            payload: Item.idDrink,
+                            payload: Item.idDrink
                           });
                         }}
                       />
