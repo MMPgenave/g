@@ -148,6 +148,11 @@ const reducer = (state, action) => {
       newState.NumberofTotaOrderedDrink = sum;
       return newState;
     }
+    case "SHOW-MODAL": {
+      const newState = { ...state };
+      newState.WellcomeModal = true;
+      return newState;
+    }
     default:
       return state;
   }
@@ -158,7 +163,8 @@ const initialState = {
   DataCopy: [],
   NumberofDrink: 0,
   NumberofTotaOrderedDrink: 0,
-  TotalPrice: 0
+  TotalPrice: 0,
+  WellcomeModal: false
 };
 export function DataProvidor(props) {
   const [state, dispatch] = useReducer(reducer, initialState);

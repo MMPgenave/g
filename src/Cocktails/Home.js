@@ -3,10 +3,17 @@ import { ProductShower } from "./ProductShower";
 import { useContext } from "react";
 import { mycontext } from "./DataProvidor";
 import { Loading } from "./Loading";
-
+import { Offer } from "./Offer";
+import { Spinner } from "./Spinner";
 export function Home() {
   const context = useContext(mycontext);
   const isLoading = context.info.isLoading;
+  const showModal = context.info.WellcomeModal;
+
+  React.useEffect(() => {
+    setTimeout(() => context.action({ type: "SHOW-MODAL" }), 5000);
+  }, []);
+
   if (isLoading) {
     return <Loading />;
   }
@@ -15,6 +22,7 @@ export function Home() {
   }
   return (
     <div>
+      {showModal ? <Spinner /> : null}
       <TotalPrice />
       {/*   <TableNumber /> */}
       <ProductShower />
