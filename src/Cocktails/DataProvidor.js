@@ -129,13 +129,17 @@ const reducer = (state, action) => {
       newState.DataCopy = newDataCopy;
 
       //update the Total Price
-      if (newState.TotalPrice === 0) {
+     /*  if (newState.TotalPrice === 0) {
         newState.TotalPrice = 0;
       } else {
         newState.TotalPrice =
           newState.TotalPrice - newDrinkofDataCopyList.price;
+      } */
+      let s = 0;//sum for Total price
+      for (let i = 0; i < newDataCopy.length; i++) {
+        s = s + newDataCopy[i].price * newDataCopy[i].NumberofOrderedDrink;
       }
-
+      newState.TotalPrice = s;
       //update the NumberofTotalDrinks
       let sum = 0;
       for (let i = 0; i < newDataCopy.length; i++) {
@@ -181,7 +185,7 @@ export function DataProvidor(props) {
       //and also
       //Adding NumberofOrderedDrink property to every drink
       Data.drinks.map((drink) => {
-        drink.price = 20;
+        drink.price = Math.floor(Math.random() * (80 - 20 + 1) + 20);;
         drink.NumberofOrderedDrink = 0;
         return drink;
       });

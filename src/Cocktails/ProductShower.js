@@ -11,7 +11,7 @@ export function ProductShower() {
   return (
     <div className="section">
       <NumberOfDrinks />
-      <hr class="bg-danger border-2 border-top border-danger" />
+      <hr class="bg-dark border-3 border-top border-dark w-75 mx-auto " />
       <div className="container  ">
         <div className="row justify-content-center ">
           {Data.map((Item, index) => {

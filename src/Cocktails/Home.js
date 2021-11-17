@@ -11,7 +11,7 @@ export function Home() {
     return <Loading />;
   }
   if (context.info.Data.length < 1) {
-    return <div>No Item Matches your Search</div>;
+    return <div className="text-center text-danger  mt-5 font-color-primary">No Item Matches your Search!</div>;
   }
   return (
     <div>
@@ -43,7 +43,15 @@ function TotalPrice() {
 
   return (
     <div>
-      <h1>Total Price : {context.info.TotalPrice} $</h1>
+      <h3
+        style={{
+          "letter-spacing": ".1rem",
+          "font-size":"1.7rem"
+        }}
+        className="ms-auto me-5 text-end w-25"
+      >
+        Total Price : {context.info.TotalPrice} $
+      </h3>
     </div>
   );
 }

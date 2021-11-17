@@ -10,7 +10,7 @@ export function NumberOfDrinks() {
     <div
       className="text-center "
       style={{
-        color: "#826a22",
+       
         "letter-spacing": ".1rem"
       }}
     >
