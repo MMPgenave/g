@@ -2,34 +2,28 @@ import React from "react";
 import { ProductShower } from "./ProductShower";
 import { useContext } from "react";
 import { mycontext } from "./DataProvidor";
-import { Loading } from "./Loading";
-import { Offer } from "./Offer";
-import { Spinner } from "./Spinner";
-export function Home() {
+import WithLoader from "./WithLoader";
+
+const Home = () => {
   const context = useContext(mycontext);
-  const isLoading = context.info.isLoading;
-  const showModal = context.info.WellcomeModal;
-
-  React.useEffect(() => {
-    setTimeout(() => context.action({ type: "SHOW-MODAL" }), 5000);
-  }, []);
-
-  if (isLoading) {
-    return <Loading />;
-  }
   if (context.info.Data.length < 1) {
-    return <div className="text-center text-danger  mt-5 font-color-primary">No Item Matches your Search!</div>;
+    return (
+      <div className="text-center text-danger  mt-5 font-color-primary">
+        No Item Matches your Search!
+      </div>
+    );
   }
   return (
     <div>
-      {showModal ? <Spinner /> : null}
       <TotalPrice />
-      {/*   <TableNumber /> */}
       <ProductShower />
     </div>
   );
-}
-const TableNumber = () => {
+};
+
+export default WithLoader(Home);
+
+/* const TableNumber = () => {
   return (
     <div class="input-group mb-3 mt-4 w-25 ms-5">
       <span class="input-group-text" id="basic-addon1">
@@ -45,7 +39,7 @@ const TableNumber = () => {
     </div>
   );
 };
-
+ */
 function TotalPrice() {
   const context = useContext(mycontext);
 
@@ -54,7 +48,7 @@ function TotalPrice() {
       <h3
         style={{
           "letter-spacing": ".1rem",
-          "font-size":"1.7rem"
+          "font-size": "1.7rem"
         }}
         className="ms-auto me-5 text-end w-25"
       >
