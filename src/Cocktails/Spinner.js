@@ -1,6 +1,9 @@
 import React from "react";
 export const Spinner = () => {
+<<<<<<< HEAD
   
+=======
+>>>>>>> 664281f865171f3816e5d6edb2e45065582c219c
   return (
     <div class="modal " id="myModal" tabindex="-1">
       <div class="modal-dialog">

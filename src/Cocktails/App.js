@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Home } from "./Home";
+import Home from "./Home";
 import { About } from "./About";
 import { Error } from "./Error";
 import { SingleProductInfo } from "./SingleProductInfo";
@@ -10,7 +10,7 @@ import { NavbarBootstrap } from "./NavbarBootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.scss";
 
-function App() {
+const App = () => {
   return (
     <DataProvidor>
       <Router>
@@ -30,6 +30,6 @@ function App() {
       </Router>
     </DataProvidor>
   );
-}
+};
 
 export default App;
