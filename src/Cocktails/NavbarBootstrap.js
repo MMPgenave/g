@@ -12,8 +12,8 @@ export function NavbarBootstrap() {
   const searchValue = React.useRef("");
 
   React.useEffect(() => {
-    /*     searchValue.current.focus();
-     */
+        searchValue.current.focus();
+    
   }, []);
   const changeHandler = (e) => {
     // console.log(e.target.value);

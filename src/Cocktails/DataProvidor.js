@@ -198,7 +198,7 @@ export function DataProvidor(props) {
 
       dispatch({ type: "DataFetching", value: Data.drinks });
     } catch (error) {
-      dispatch({ type: "Loading", value: false });
+     // dispatch({ type: "Loading", value: false });
       console.log(error);
     }
   };

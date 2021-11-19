@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { NumberOfDrinks } from "./NumberOfDrinks";
 import { FaPlus, FaMinus } from "react-icons/fa";
+
 export function ProductShower() {
   const context = useContext(mycontext);
   const Data = context.info.Data;
@@ -44,7 +45,7 @@ export function ProductShower() {
                         onClick={() => {
                           dispatch({
                             type: "ADD-TO-CART",
-                            payload: Item.idDrink
+                            payload: Item.idDrink,
                           });
                         }}
                       />
@@ -56,7 +57,7 @@ export function ProductShower() {
                         onClick={() => {
                           dispatch({
                             type: "DROP-FROM-CART",
-                            payload: Item.idDrink
+                            payload: Item.idDrink,
                           });
                         }}
                       />

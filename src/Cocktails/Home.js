@@ -1,11 +1,32 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { ProductShower } from "./ProductShower";
 import { useContext } from "react";
 import { mycontext } from "./DataProvidor";
 import WithLoader from "./WithLoader";
 
+const MemoizedProductShower = React.memo(ProductShower);
+
 const Home = () => {
   const context = useContext(mycontext);
+
+
+  //here I show the  use case of useMemo hook
+  const mostExpensiveDrink = () => {
+    console.log(`mostExpensiveDrink`);
+
+    let sum = 0;
+    for (let i = 0; i < 1000000; i++) {
+      sum += i;
+    }
+    return sum;
+  };
+  const MemoizedMostExpensiveDrink = useMemo(() => mostExpensiveDrink(), []);
+
+  console.log(MemoizedMostExpensiveDrink);
+  //end of use case fo useMemo hook
+  //uncomment the line below to see the effect of useMemo hook
+  //console.log(mostExpensiveDrink())
+
   if (context.info.Data.length < 1) {
     return (
       <div className="text-center text-danger  mt-5 font-color-primary">
@@ -16,7 +37,7 @@ const Home = () => {
   return (
     <div>
       <TotalPrice />
-      <ProductShower />
+      <MemoizedProductShower />
     </div>
   );
 };
@@ -40,15 +61,14 @@ export default WithLoader(Home);
   );
 };
  */
-function TotalPrice() {
+const TotalPrice = React.memo(() => {
   const context = useContext(mycontext);
-
   return (
     <div>
       <h3
         style={{
           "letter-spacing": ".1rem",
-          "font-size": "1.7rem"
+          "font-size": "1.7rem",
         }}
         className="ms-auto me-5 text-end w-25"
       >
@@ -56,4 +76,4 @@ function TotalPrice() {
       </h3>
     </div>
   );
-}
+});
