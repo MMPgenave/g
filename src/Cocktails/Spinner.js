@@ -1,9 +1,6 @@
 import React from "react";
-import bootstrap from "bootstrap";
 export const Spinner = () => {
-  var myModal = new bootstrap.Modal(document.getElementById("myModal"), {
-    keyboard: false
-  });
+  
   return (
     <div class="modal " id="myModal" tabindex="-1">
       <div class="modal-dialog">

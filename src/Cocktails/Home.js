@@ -10,9 +10,7 @@ export function Home() {
   const isLoading = context.info.isLoading;
   const showModal = context.info.WellcomeModal;
 
-  React.useEffect(() => {
-    setTimeout(() => context.action({ type: "SHOW-MODAL" }), 5000);
-  }, []);
+ 
 
   if (isLoading) {
     return <Loading />;
@@ -22,7 +20,6 @@ export function Home() {
   }
   return (
     <div>
-      {showModal ? <Spinner /> : null}
       <TotalPrice />
       {/*   <TableNumber /> */}
       <ProductShower />
