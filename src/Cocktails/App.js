@@ -15,7 +15,7 @@ const App = () => {
     <DataProvidor>
       <Router>
         <NavbarBootstrap />
-        <Switch>
+        <Switch> 
           <Route exact path="/">
             <Home />
           </Route>
@@ -23,8 +23,8 @@ const App = () => {
             <About />
           </Route>
           <Route path="/drinks/:id" children={<SingleProductInfo />} />
-          <Route path="*" >
-          <Error/ >
+          <Route path="*">
+            <Error />
           </Route>
         </Switch>
       </Router>
