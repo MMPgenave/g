@@ -35,7 +35,7 @@ export function ProductShower() {
                     <Link
                       className="btn-lg p-0  "
                       style={{ "text-decoration": "none" }}
-                      to={`/${Item.idDrink}`}
+                      to={`/drinks/${Item.idDrink}`}
                     >
                       Details...
                     </Link>

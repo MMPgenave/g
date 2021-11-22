@@ -15,7 +15,7 @@ const Home = () => {
     console.log(`mostExpensiveDrink`);
 
     let sum = 0;
-    for (let i = 0; i < 1000000; i++) {
+    for (let i = 0; i < 1000; i++) {
       sum += i;
     }
     return sum;
@@ -29,7 +29,7 @@ const Home = () => {
 
   if (context.info.Data.length < 1) {
     return (
-      <div className="text-center text-danger  mt-5 font-color-primary">
+      <div className="text-center text-danger  mt-5 ">
         No Item Matches your Search!
       </div>
     );
