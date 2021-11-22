@@ -1,17 +1,26 @@
-
 @import "~bootstrap/scss/bootstrap";
 
-
-
-nav , .card , .single-product-container, .input-group-lg {
-  font-family: flamenco, BlinkMacSystemFont, Segoe UI, Roboto, Ubuntu, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol
+nav,
+.card,
+.single-product-container,
+.input-group-lg {
+  font-family: flamenco, BlinkMacSystemFont, Segoe UI, Roboto, Ubuntu,
+    Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji,
+    Segoe UI Symbol;
 }
-.nav-link{
-    font-size: xx-large;
+.nav-link {
+  font-size: xx-large;
 }
-.NumberofDrink, .text-center, .text-end{
-    font-family:flamenco;
-        font-size: xx-large;
+.NumberofDrink,
+.text-center,
+.text-end {
+  font-family: flamenco;
+  font-size: xx-large;
+}
+
+.add:hover,
+.delete:hover {
+  font-size: 1.3rem;
 }
 /* import bootstrap to set changes */
 @import "~bootstrap/scss/bootstrap";

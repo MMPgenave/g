@@ -12,8 +12,7 @@ export function NavbarBootstrap() {
   const searchValue = React.useRef("");
 
   React.useEffect(() => {
-        searchValue.current.focus();
-    
+    searchValue.current.focus();
   }, []);
   const changeHandler = (e) => {
     // console.log(e.target.value);
@@ -59,7 +58,7 @@ export function NavbarBootstrap() {
               class="btn p-1  bg-transparent position-relative ms-auto me-4 "
             >
               <FiShoppingCart className="fa-2x " />
-              <span class="position-absolute top-0 start-100 p-2 translate-middle badge rounded-pill bg-primary">
+              <span class="position-absolute top-0 start-100 p-2 translate-middle badge rounded-pill bg-dark">
                 {NumberofDrinks}
               </span>
             </button>

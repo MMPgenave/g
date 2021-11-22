@@ -35,13 +35,13 @@ export function ProductShower() {
                     <Link
                       className="btn-lg p-0  "
                       style={{ "text-decoration": "none" }}
-                      to={`/${Item.idDrink}`}
+                      to={`/drinks/${Item.idDrink}`}
                     >
                       Details...
                     </Link>
                     <div>
                       <FaPlus
-                        className="float-end mt-2 ms-4 btn-lg p-0"
+                        className="float-end mt-2 ms-4 btn-lg p-0 add"
                         onClick={() => {
                           dispatch({
                             type: "ADD-TO-CART",
@@ -53,7 +53,7 @@ export function ProductShower() {
                         {Item.NumberofOrderedDrink}
                       </p>
                       <FaMinus
-                        className="float-end mt-2  btn-lg p-0"
+                        className="float-end mt-2 delete btn-lg p-0"
                         onClick={() => {
                           dispatch({
                             type: "DROP-FROM-CART",
