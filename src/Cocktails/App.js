@@ -15,7 +15,7 @@ const App = () => {
     <DataProvidor>
       <Router>
         <NavbarBootstrap />
-        <Switch>
+        <Switch> 
           <Route exact path="/">
             <Home />
           </Route>
